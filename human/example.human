@@ -1,12 +1,4 @@
 *NEW_ANALYSIS*
-# region REG
-My
-region
-to 
-be
-folded
-away
-# endregion
 lumi 1
 minstatus  1
 maxstatus  100
@@ -61,26 +53,21 @@ pick_list_in_OBS[OBS=pTofn,list=1;2;]
 #
 #
 ##################
+#region
 #take_all[]
 #with_OBSminmaxrange[OBS=minvofn,OBSmin=5,OBSmax=0,minmaxrange=range]
 #pick_list_in_OBS[OBS=minvofn,list=2;1]
 #useTwoClassesOfPIDs[5;-5]
+#endregion
 *END_K_FILTERS*
 #
 *PROC_SESSION*
 #
-# region REG
-My
-region
-to 
-be
-folded
-away
-# endregion
-#*NEWPROC* 1 LHC14_mt173_MSTW08NLO_ttbar_e+mu-_scaleMtop_inclusive_50K_run1_ParameterR_0.4  ! 6647 fb
-#LHC14_mt173_MSTW08NLO_ttbar_e+mu-_scaleMtop_inclusive_50K_run1_ParameterR_0.4_delphes_events.lhco.lhetargetcrosssection,6.647.lhe.root
-#*ENDPROC*
-# endregion
+#LHC14_mt173_MSTW08NLO_ttbar_e+mu-_scaleMtop_inclusive_50K_run1_ParameterR_0.4  ! 6647 fb region 
+*NEWPROC* 1 LHC14_mt173_MSTW08NLO_ttbar_e+mu-_scaleMtop_inclusive_50K_run1_ParameterR_0.4  ! 6647 fb
+LHC14_mt173_MSTW08NLO_ttbar_e+mu-_scaleMtop_inclusive_50K_run1_ParameterR_0.4_delphes_events.lhco.lhetargetcrosssection,6.647.lhe.root
+*ENDPROC*
+#endregion
 #
 *END_PROC_SESSION*
 *CUT_SESSION*
@@ -95,6 +82,8 @@ number 55,-55,211234 0 take_all[] 0 1 = 0 strict any | nb+nj>1
 #delta_phi_mETdelphes_single 5,-5,55,-55,211234Uwith_OBSminmaxrange[OBS=eta,OBSmin=-5,OBSmax=5,minmaxrange=range]Upick_list_in_OBS[OBS=pTofn,list=1;2;3;4] 1 take_all[] 0 0.2 = 0 strict any ! dPhi(mET,jet)>0.2 for all the jets
 #
 *END_CUT_SESSION*
+#region
+#
 # **********************
 #    EXAMPLES OF USE
 # **********************
@@ -103,3 +92,5 @@ number 55,-55,211234 0 take_all[] 0 1 = 0 strict any | nb+nj>1
 # minvofn 12 11  2 100 14000 = -1
 # means that all the pairs made of muons and electrons must have at least 
 # 100 GeV of invariant mass
+#
+#endregion

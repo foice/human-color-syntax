@@ -4,10 +4,7 @@ define(function (require, exports, module) {
     
     CodeMirror.defineSimpleMode("human", {
     start: [
-      { regex: /#./,   push: "comment", token: "comment" },
-      { regex: /##/,  token: "comment" },
-      { regex: /#/,  token: "comment" },
-     // { regex: /\*./,    push: "human", token: "tag" },
+      { regex: /#.*/,   /*push: "comment",*/ token: "comment" },
       { regex: /\*NEW/,    push: "human", token: "tag" },
         { regex: /\*NEWPROC/,    push: "human", token: "tag" },
         { regex: /\*CUT/,    push: "human", token: "tag" },
@@ -15,8 +12,8 @@ define(function (require, exports, module) {
       { regex: /\*BEGIN/,    push: "human", token: "tag" }
     ],
     human: [
-      { regex: /#./,   push: "comment", token: "comment" },
-      { regex: /#/,  token: "comment" },
+      { regex: /#.*/,  /* push: "comment",*/ token: "comment" },
+     // { regex: /#/,  token: "comment" },
         
       { regex: /\*END/, pop: true, token: "tag" },
 
@@ -47,16 +44,16 @@ define(function (require, exports, module) {
       // Paths
       { regex: /(?:\.\.\/)*(?:[A-Za-z_][\w\.]*)+/, token: "variable-2" }
     ],
-    dash_comment: [
-      { regex: /--\}\}/, pop: true, token: "comment" },
-
+//    dash_comment: [
+//      { regex: /--\}\}/, pop: true, token: "comment" },
       // Commented code
-      { regex: /./, token: "comment"}
-    ],
+//      { regex: /./, token: "comment"}
+ //   ],
     comment: [
-  
-      { regex: /.$/, pop: true, token: "comment" },          
-      { regex: /./, token: "comment" }
+       
+     // { regex: /.$/, pop: true, token: "comment" }
+     // ,  { regex: /abc(?!$)/, token: "comment" } 
+
     ]
   });
 
@@ -66,7 +63,7 @@ define(function (require, exports, module) {
         name: "human",
         mode: ["human", "text/x-human-template"],
         fileExtensions: ["human"],
-        blockComment: ["#", "#"],
+        blockComment: ["#region\n", "\n#endregion"],
         lineComment: ["#"] 
     });
     
