@@ -4,9 +4,9 @@ define(function (require, exports, module) {
     
     CodeMirror.defineSimpleMode("human", {
     start: [
-      { regex: /#./,   push: "comment", token: "comment" },
-      { regex: /##/,  token: "comment" },
-      { regex: /#/,  token: "comment" },
+      { regex: /#.*/, token: "comment" },
+    //   { regex: /##/,  token: "comment" },
+    //   { regex: /#/,  token: "comment" },
      // { regex: /\*./,    push: "human", token: "tag" },
       { regex: /\*NEW/,    push: "human", token: "tag" },
         { regex: /\*NEWPROC/,    push: "human", token: "tag" },
@@ -15,8 +15,8 @@ define(function (require, exports, module) {
       { regex: /\*BEGIN/,    push: "human", token: "tag" }
     ],
     human: [
-      { regex: /#./,   push: "comment", token: "comment" },
-      { regex: /#/,  token: "comment" },
+      { regex: /#.*/,   token: "comment" },
+    //   { regex: /#/,  token: "comment" },
         
       { regex: /\*END/, pop: true, token: "tag" },
 
